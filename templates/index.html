@@ -8,23 +8,26 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #7695FF; /* Dark blue background */
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
         h1 {
             text-align: center;
             color: #fff;
             z-index: 10;
-            position: relative;
+            position: absolute;
+            top: 20px;
+            width: 100%;
         }
         form {
             max-width: 400px;
+            width: 90%;
             margin: 0 auto;
             background: linear-gradient(135deg, #295F98, #CDC2A5);
             padding: 20px;
@@ -40,7 +43,7 @@
             box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
         }
         input[type="text"], input[type="submit"] {
-            width: 250; /* Same width for both input and button */
+            width: calc(100% - 32px); /* Full width minus padding */
             padding: 15px;
             margin: 10px 0;
             border: none;
@@ -71,8 +74,6 @@
             position: relative;
             color: #fff;
         }
-
-        /* Rain animation with wind */
         .rain {
             position: absolute;
             top: 0;
@@ -83,10 +84,9 @@
             pointer-events: none;
             overflow: hidden;
         }
-
         .drop {
             position: absolute;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.5);
             width: 2px;
             height: 60px;
             bottom: 100%;
@@ -94,24 +94,21 @@
             opacity: 0.6;
             transform: skewX(-15deg); /* Tilt to simulate wind */
         }
-
         @keyframes fall {
             to {
                 transform: translateY(100vh) translateX(-10vw); /* Fall diagonally to simulate wind */
             }
         }
-
-        /* Randomizing speed, size, and positions for natural wind-driven rain effect */
-        .rain .drop:nth-child(1)  { left: 10%;  animation-duration: 0.5s;  height: 80px; }
-        .rain .drop:nth-child(2)  { left: 30%;  animation-duration: 0.7s;  height: 50px; }
-        .rain .drop:nth-child(3)  { left: 50%;  animation-duration: 0.6s;  height: 70px; }
-        .rain .drop:nth-child(4)  { left: 70%;  animation-duration: 0.8s;  height: 40px; }
-        .rain .drop:nth-child(5)  { left: 20%;  animation-duration: 0.9s;  height: 60px; }
-        .rain .drop:nth-child(6)  { left: 40%;  animation-duration: 0.5s;  height: 75px; }
-        .rain .drop:nth-child(7)  { left: 60%;  animation-duration: 0.7s;  height: 90px; }
-        .rain .drop:nth-child(8)  { left: 80%;  animation-duration: 0.6s;  height: 65px; }
-        .rain .drop:nth-child(9)  { left: 90%;  animation-duration: 0.4s;  height: 85px; }
-        .rain .drop:nth-child(10) { left: 35%;  animation-duration: 0.6s;  height: 70px; }
+        .rain .drop:nth-child(1) { left: 10%; animation-duration: 0.5s; height: 80px; }
+        .rain .drop:nth-child(2) { left: 30%; animation-duration: 0.7s; height: 50px; }
+        .rain .drop:nth-child(3) { left: 50%; animation-duration: 0.6s; height: 70px; }
+        .rain .drop:nth-child(4) { left: 70%; animation-duration: 0.8s; height: 40px; }
+        .rain .drop:nth-child(5) { left: 20%; animation-duration: 0.9s; height: 60px; }
+        .rain .drop:nth-child(6) { left: 40%; animation-duration: 0.5s; height: 75px; }
+        .rain .drop:nth-child(7) { left: 60%; animation-duration: 0.7s; height: 90px; }
+        .rain .drop:nth-child(8) { left: 80%; animation-duration: 0.6s; height: 65px; }
+        .rain .drop:nth-child(9) { left: 90%; animation-duration: 0.4s; height: 85px; }
+        .rain .drop:nth-child(10) { left: 35%; animation-duration: 0.6s; height: 70px; }
     </style>
 </head>
 <body>
@@ -133,7 +130,6 @@
     <form id="weather-form">
         <label for="phone_number">Your Phone Number:</label>
         <input type="text" id="phone_number" name="phone_number" required>
-
         <input type="submit" value="Give Notification">
     </form>
 
